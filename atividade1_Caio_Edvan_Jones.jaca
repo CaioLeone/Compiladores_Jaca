@@ -1,0 +1,13 @@
+#Caio Leone
+
+classe _Padaria 
+início
+  var real pao;
+    var real preco;
+
+  procedimento setPrecoPao (real preco_pao) 
+    preco := pao_pao;
+      
+  #função abstrata
+      função real pesoEstimado();
+fim
