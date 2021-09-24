@@ -1,13 +1,52 @@
 #Caio Leone
 
+classe _Compra filha da classe _Padaria
+
 classe _Padaria 
 início
   var real pao;
-    var real preco;
+  var real preco;
 
   procedimento setPrecoPao (real preco_pao) 
     preco := pao_pao;
-      
+
+  procedimento setQuantPao (real quant_pao)
+    pao := quant_pao;
+
   #função abstrata
-      função real pesoEstimado();
+      função real precoCompra();
+fim
+
+classe _Compra
+  início
+    var real valor precoCompra() (preco * pao);
+  fim
+
+  classe _Principal 
+início	
+	objeto _ES interface;
+
+	>>> procedimento principal () 
+	início
+		var real tipo_pao;
+		var real valor_pao;
+		
+		objeto _Padaria padaria;
+
+		tipo_pao := interface.lê();
+		valor_pao := interface.lê();
+
+
+		se(valor_pao == 0)
+		início
+			interface.imprime(0)
+		fim
+		senão
+		início
+			padaria.setPrecoPao(tipo_pao);
+      padaria.setQuantPao(valor_pao;)
+      interface.imprime(padaria.precoCompra());
+		fim
+     
+	fim
 fim
