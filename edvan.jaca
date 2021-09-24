@@ -1,0 +1,103 @@
+classe _Usuário filha da classe _Cidadão & classe _Funcinário filha de classe _Cidadão
+{
+    A classe usuário herda da classe cidadão, sendo o usuário parte de
+    uma organização.
+    Na organização, o usuário pode ser um administrador ou um cliente.
+    A classe funcionário guarda informações sobre cidadãos que são funcionários. 
+}
+
+classe _Cidadão 
+# Classe cidadão, abstraí nome, sobrenome, cpf, rg, vacinado e salário
+início
+	  var string nome;
+    var string sobrenome;
+    var string rg;
+    var string cpf;
+    var bool vacinado;
+    
+    {set valores dos atributos}
+	procedimento setNome (string novo_nome) 
+		nome := novo_nome;
+    
+    procedimento setSobrenome (string novo_sobrenome) 
+		sobrenome := novo_sobrenome;
+    
+    procedimento setRG (string novo_rg) 
+		rg := novo_rg;
+    
+    procedimento setCPF (string novo_cpf) 
+		cpf := novo_cpf;  
+	
+    procedimento setVacinado (bool estáVacinado) 
+		vacinado := estáVacinado;
+    
+    ## get valores dos atributos da classe
+    
+    função string getNome () nome;
+    
+    função string getSobrenome () sobrenome;
+    
+    função string getRG () rg;
+    
+    função string getCPF () cpf;  
+	
+    função bool getVacinado () vacinado;
+    
+fim
+
+classe _Funcionário
+início
+    var string cargo;
+    var real salário;
+    
+    objeto _ES interface;
+    
+    procedimento setCargo(string novo_cargo)
+        cargo := novo_cargo;
+    
+    procedimento setSalário(real novo_salário)
+        salário := novo_salário;
+
+    função string getCargo() 
+        (cargo);
+
+    função real getSalário() 
+        (salário);
+
+    função string info() 
+        (interface.imprime("O funcionário tem salário %f e o cargo %s", getSalário, getCargo));
+fim
+
+
+classe _Usuário 
+início	
+	objeto _ES interface; # Para impressão
+
+	>>> procedimento principal () # Não entendi essa linha!! 
+	início
+		var string cargo;
+		var real salário;
+		
+		objeto _Cidadão kane;
+
+		cargo := interface.lê();
+		salário := interface.lê();
+
+		se(cargo == 'administrador')
+		início
+			objeto _Funcionário func;
+			func.setCargo(cargo);
+		fim
+		senão
+		início
+            # Se não é um funcionário é um cidadão...
+			kane.setOcupação(cargo);
+		fim
+		
+		func.setSalário(salário);
+		
+        # Imprime informações sobre o funcionário
+		func.info(); 
+		
+	fim
+fim
