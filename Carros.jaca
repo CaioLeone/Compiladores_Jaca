@@ -1,0 +1,51 @@
+classe _Carro filha da classe _Automovel & classe _Moto filha da classe _Automovel;
+
+classe _Automovel
+início
+	var real altura;
+	var real largura;
+	var real comprimento;
+	var real rodas;
+	
+	procedimento setAltura (real nova_altura)
+		altura := nova_altura;
+	
+	procedimento setLargura (real nova_largura)
+		altura := nova_largura;
+
+	procedimento setLargura (real nova_comprimento)
+		altura := nova_comprimento;
+	
+	procedimento setRodas(real qtd_rodas)
+	
+	funcao real getAltura() (altura)
+	funcao real getLargura() (largura)
+	funcao real getComprimento() (comprimento)
+	funcao real getRodas() (rodas)
+fim
+
+classe _Carro
+inicio
+	procedimento setRodas(real qtd_rodas)
+		se(qtd_rodas > 2)
+		início
+			rodas := qtd_rodas;
+		fim
+		senão
+		início
+			rodas := 4;
+		fim
+fim
+
+classe _Moto
+inicio
+	procedimento setRodas(real qtd_rodas)
+		se(qtd_rodas > 1 e qtd_rodas < 4)
+		início
+			rodas := qtd_rodas;
+		fim
+		senão
+		início
+			rodas := 2;
+		fim
+fim
